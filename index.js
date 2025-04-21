@@ -13,6 +13,7 @@ const currentDate = now.toLocaleDateString('en-US', {
 });
 
 // Define base path for GitHub Pages
+// This is for linking within the site, not for file structure
 const basePath = '/metal';
 
 Metalsmith(__dirname)
@@ -28,6 +29,7 @@ Metalsmith(__dirname)
   .destination('./build')
   .clean(true)
   .use(markdown())
+  // Modify permalinks to work correctly without creating a metal subdirectory
   .use(permalinks({
     relative: false,
     pattern: ':title',
@@ -37,23 +39,22 @@ Metalsmith(__dirname)
     }]
   }))
   .use(function (files, metalsmith, done) {
-    // Add base path to permalinks and handle index file
+    // Modify permalinks but ensure files are created at the right place
     Object.keys(files).forEach(function (file) {
       const data = files[file];
 
-      // Handle index file specifically
+      // Special handling for index file
       if (path.basename(file, path.extname(file)) === 'index') {
         data.isIndex = true;
+        data.permalink = '/'; // Place index.html at the root level
 
-        // Set correct permalink for index
-        if (data.permalink === '/') {
-          data.permalink = basePath + '/';
+        // No changes needed to path - we want it at build/index.html
+      } else {
+        // For other files, keep them in their respective folders
+        if (data.permalink && data.permalink !== '/') {
+          // Don't add basePath to permalinks for file paths
+          // This ensures files go to build/about/ etc. instead of build/metal/about/
         }
-      }
-
-      // Ensure all permalinks have the correct base path
-      if (data.permalink && !data.permalink.startsWith(basePath) && data.permalink !== '/') {
-        data.permalink = path.join(basePath, data.permalink);
       }
     });
     done();
