@@ -12,11 +12,15 @@ const currentDate = now.toLocaleDateString('en-US', {
   day: 'numeric'
 });
 
+// Define base path for GitHub Pages
+const basePath = '/metal';
+
 Metalsmith(__dirname)
   .metadata({
     site: {
       title: 'My Metalsmith Website',
-      description: 'A simple website built with Metalsmith'
+      description: 'A simple website built with Metalsmith',
+      basePath: basePath
     },
     date: currentDate
   })
@@ -33,10 +37,23 @@ Metalsmith(__dirname)
     }]
   }))
   .use(function (files, metalsmith, done) {
-    // Mark the index.md file so it gets special permalink handling
+    // Add base path to permalinks and handle index file
     Object.keys(files).forEach(function (file) {
+      const data = files[file];
+
+      // Handle index file specifically
       if (path.basename(file, path.extname(file)) === 'index') {
-        files[file].isIndex = true;
+        data.isIndex = true;
+
+        // Set correct permalink for index
+        if (data.permalink === '/') {
+          data.permalink = basePath + '/';
+        }
+      }
+
+      // Ensure all permalinks have the correct base path
+      if (data.permalink && !data.permalink.startsWith(basePath) && data.permalink !== '/') {
+        data.permalink = path.join(basePath, data.permalink);
       }
     });
     done();
