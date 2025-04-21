@@ -1,7 +1,7 @@
 ---
 title: Home Page
 layout: default.hbs
-permalink: /
+permalink: /metal/
 ---
 
 # Welcome to My Metalsmith Site
