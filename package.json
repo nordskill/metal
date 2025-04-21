@@ -1,0 +1,24 @@
+{
+  "name": "metal",
+  "version": "1.0.0",
+  "description": "Metalsmith demo site",
+  "main": "index.js",
+  "scripts": {
+    "build": "node index.js",
+    "serve": "serve build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@metalsmith/markdown": "^1.10.0",
+    "@metalsmith/permalinks": "^3.2.0",
+    "jstransformer-handlebars": "^1.2.0",
+    "metalsmith": "^2.6.3",
+    "metalsmith-layouts": "^2.3.1"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
