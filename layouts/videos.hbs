@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }} | Metalsmith Example</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    nav {
+      margin-bottom: 2rem;
+    }
+
+    nav a {
+      margin-right: 1rem;
+    }
+
+    h1 {
+      color: red;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .video-card {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-info {
+      padding: 1rem;
+    }
+
+    .video-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .video-description {
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="{{ site.basePath }}/">Home</a>
+      <a href="{{ site.basePath }}/about/">About</a>
+      <a href="{{ site.basePath }}/videos/">Videos</a>
+    </nav>
+  </header>
+  <main>
+    <h1>{{ title }}</h1>
+    {{{ contents }}}
+
+    <div class="video-grid">
+      {{#each videos}}
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/{{ this.youtubeId }}" title="{{ this.title }}" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <div class="video-title">{{ this.title }}</div>
+            <div class="video-description">{{ this.description }}</div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </main>
+  <footer>
+    <p>Built with Metalsmith | Updated on {{ date }}</p>
+  </footer>
+</body>
+
+</html>

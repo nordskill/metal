@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>About | Metalsmith Example</title>
+  <title> | Metalsmith Example</title>
   <style>
     body {
       font-family: system-ui, sans-serif;
@@ -43,11 +43,23 @@
     </nav>
   </header>
   <main>
-    <h1 id="about-this-site">About This Site</h1>
-<p>This page demonstrates how Metalsmith loads content from multiple Markdown files.</p>
-<h2 id="about-metalsmith">About Metalsmith</h2>
-<p>Metalsmith is a simple, pluggable static site generator that&#39;s perfect for small websites.</p>
-
+    [
+  {
+    "title": "Introduction to Metalsmith",
+    "youtubeId": "nqEjwL1UvGY",
+    "description": "Learn the basics of the Metalsmith static site generator."
+  },
+  {
+    "title": "Static Site Generators Explained",
+    "youtubeId": "FQL2J7809a8",
+    "description": "A comparison of popular static site generators including Metalsmith."
+  },
+  {
+    "title": "Handlebars Templating Tutorial",
+    "youtubeId": "NaUHlG-Q0vg",
+    "description": "Master Handlebars templates for your Metalsmith projects."
+  }
+]
   </main>
   <footer>
     <p>Built with Metalsmith | Updated on April 22, 2025</p>

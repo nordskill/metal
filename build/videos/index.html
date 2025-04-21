@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Video Gallery | Metalsmith Example</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    nav {
+      margin-bottom: 2rem;
+    }
+
+    nav a {
+      margin-right: 1rem;
+    }
+
+    h1 {
+      color: red;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .video-card {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-info {
+      padding: 1rem;
+    }
+
+    .video-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .video-description {
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/metal/">Home</a>
+      <a href="/metal/about/">About</a>
+      <a href="/metal/videos/">Videos</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Video Gallery</h1>
+    <h1 id="video-gallery">Video Gallery</h1>
+<p>Explore our collection of educational videos about Metalsmith and static site generation. These videos provide valuable insights and tutorials to help you master web development with Metalsmith.</p>
+
+
+    <div class="video-grid">
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/nqEjwL1UvGY" title="Introduction to Metalsmith" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Introduction to Metalsmith</div>
+            <div class="video-description">Learn the basics of the Metalsmith static site generator.</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/FQL2J7809a8" title="Static Site Generators Explained" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Static Site Generators Explained</div>
+            <div class="video-description">A comparison of popular static site generators including Metalsmith.</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/NaUHlG-Q0vg" title="Handlebars Templating Tutorial" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Handlebars Templating Tutorial</div>
+            <div class="video-description">Master Handlebars templates for your Metalsmith projects.</div>
+          </div>
+        </div>
+    </div>
+  </main>
+  <footer>
+    <p>Built with Metalsmith | Updated on April 22, 2025</p>
+  </footer>
+</body>
+
+</html>

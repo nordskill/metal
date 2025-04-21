@@ -3,6 +3,7 @@ const markdown = require('@metalsmith/markdown');
 const layouts = require('metalsmith-layouts');
 const permalinks = require('@metalsmith/permalinks');
 const path = require('path');
+const fs = require('fs');  // Add fs module to read the JSON file
 
 // Get current date for footer
 const now = new Date();
@@ -29,6 +30,30 @@ Metalsmith(__dirname)
   .destination('./build')
   .clean(true)
   .use(markdown())
+  // Add a step to load videos data from JSON
+  .use(function (files, metalsmith, done) {
+    try {
+      const videosPath = path.join(__dirname, 'src', 'data', 'videos.json');
+      if (fs.existsSync(videosPath)) {
+        const videosData = JSON.parse(fs.readFileSync(videosPath, 'utf8'));
+        
+        // Find the videos file in a more robust way that works after markdown conversion
+        Object.keys(files).forEach(function(file) {
+          if (file === 'videos.md' || file === 'videos/index.html') {
+            console.log('Adding videos data to:', file);
+            files[file].videos = videosData;
+          }
+        });
+        
+        // Also store in metadata for global access
+        const metadata = metalsmith.metadata();
+        metadata.videos = videosData;
+      }
+    } catch (err) {
+      console.error('Error loading videos data:', err);
+    }
+    done();
+  })
   // Modify permalinks to work correctly without creating a metal subdirectory
   .use(permalinks({
     relative: false,

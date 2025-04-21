@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Introduction to Metalsmith",
+    "youtubeId": "nqEjwL1UvGY",
+    "description": "Learn the basics of the Metalsmith static site generator."
+  },
+  {
+    "title": "Static Site Generators Explained",
+    "youtubeId": "FQL2J7809a8",
+    "description": "A comparison of popular static site generators including Metalsmith."
+  },
+  {
+    "title": "Handlebars Templating Tutorial",
+    "youtubeId": "NaUHlG-Q0vg",
+    "description": "Master Handlebars templates for your Metalsmith projects."
+  }
+]
