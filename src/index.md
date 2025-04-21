@@ -12,4 +12,4 @@ This is a simple website built with Metalsmith. The content is loaded from Markd
 
 - Simple and lightweight
 - Content from Markdown files
-- Automatic deployment via GitHub Actions!
+- Automatic deployment via GitHub Actions!!
